@@ -1,6 +1,9 @@
 // required a node module called fs, this is for the file system
 const fs = require("fs");
 const crypto = require("crypto");
+const util = require("util");
+
+const scrypt = util.promisify(crypto.scrypt);
 class UsersRepo {
     constructor(filename) {
         // if the filename not exist then throw an error
@@ -28,13 +31,40 @@ class UsersRepo {
     // creating the new user and adding id with it
     async create(attrs) {
         attrs.id = this.randomId();
+        // created a salt with random hex value
+        const salt = crypto.randomBytes(8).toString("hex");
+        // created a buffer for the password
+        const buf = await scrypt(attrs.password, salt, 64);
+
         const records = await this.getAll();
-        records.push(attrs);
+        // assign the record obj in order to update the user
+        // and add the password with a buffer
+        const record = {
+            ...attrs,
+            password: `${buf.toString("hex")}.${salt}`,
+        };
+        records.push(record);
         // after its created and add the records back to the file
         // in this case call the write all function
         await this.writeAll(records);
-        return attrs;
+        return record;
     }
+
+    // a password validation for hashed password
+    async comparePasswords(saved, supplied) {
+        // saved -> password saved in our database
+        // supplied -> password given by the user that want to sign-in
+
+        // const result = saved.split('.');
+        // const hashed = result[0];
+        // const salt = result[1];
+
+        // short way to assign the value
+        const [hashed, salt] = saved.split(".");
+        const hashedSuppliedBuf = await scrypt(supplied, salt, 64);
+        return hashed === hashedSuppliedBuf.toString("hex");
+    }
+
     // writes records to the this.filename
     async writeAll(records) {
         //write the updated records array back to this.filename
