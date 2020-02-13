@@ -1,35 +1,7 @@
 [
   {
-    "email": "test@test.com"
-  },
-  {
-    "email": "xianwei@dada.com",
-    "password": "password",
-    "id": "c36cf999"
-  },
-  {
-    "email": "wei@gg.com",
-    "password": "password",
-    "id": "424f5feb"
-  },
-  {
-    "email": "weiwei@wei.com",
-    "password": "pass",
-    "id": "9d52438c"
-  },
-  {
-    "email": "xianwei1@ss.com",
-    "password": "email",
-    "id": "3cd4cbd0"
-  },
-  {
-    "email": "dadada@gmail.com",
-    "password": "5be97da6c67f0c465828c16bb86fe0d62c343b03ea198e9094a7032a9473b8f5786bd064e8e6e134ad08ebd9e78d9df9d1ed888afb617d6c14c2f6e0975cb4df.34b7a87dfd02e5ed",
-    "id": "7c48ef97"
-  },
-  {
-    "email": "dada2@gmail.com",
-    "password": "c453ef1a2634f7cdab86b2958e0a7e8c507f85d588efea7f9d981a15ed4c6f39997d43590489f4a6248c48bc8d784e5f320499c10be6b208f91b3894d684bda0.5c61422313af187b",
-    "id": "952497d7"
+    "email": "xianwei1@gmail.com",
+    "password": "e9cf540f468e6ef9848479b4dfe1b611821a9a46dcd54dd05997b2fcfd0f02e53004d043e6a917ac386b1b2ee624b23f407895337f4ce40f3a8caad141bd0673.3e20cffa21789dde",
+    "id": "cbeea943"
   }
 ]
